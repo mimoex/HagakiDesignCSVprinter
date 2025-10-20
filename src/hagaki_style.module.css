@@ -1,0 +1,130 @@
+.page {
+  width: 100mm;
+  height: 148mm;
+  position: relative;
+  margin: 1rem auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  page-break-after: always;
+
+  background-size: 100mm 148mm;
+  background-repeat: no-repeat;
+  background-color: #fff; /* 常に白固定 */
+  background-blend-mode: lighten;
+
+  font-family: "UDデジタル教科書体 ProN","UD デジタル 教科書体 N-R","BIZ UDPMincho",serif;
+  color: #000;
+  
+}
+
+/* 郵便番号（右上） */
+.postal3,
+.postal4 {
+  position: absolute;
+  font-family: Courier, monospace;
+  font-size: 14pt;
+  line-height: 100%;
+}
+.postal3 {
+  top: 13.8mm;
+  left: 45mm;
+  letter-spacing: calc(7mm - 0.6em);
+}
+.postal4 {
+  top: 13.8mm;
+  left: calc(45mm + 21.6mm);
+  letter-spacing: calc(6.8mm - 0.6em);
+}
+
+
+/* 住所（右側縦書き） */
+.address {
+  position: absolute;
+  top: 30mm;
+  right: 5mm;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 12pt;
+  line-height: 1.8;
+  letter-spacing: 0.15em;
+  white-space: pre-line;
+}
+
+/* 宛名（中央縦書き） */
+.name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-align: center;
+  white-space: nowrap; /* ← 改行を禁止 */
+  font-size: 20pt;
+  letter-spacing: 0.25em;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+/* 宛名全体 */
+.to_name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 20pt;
+  letter-spacing: 0.25em;
+  line-height: 1.6;
+  font-weight: 600;
+
+  display: flex;
+  flex-direction: row;     /* ← ここを追加（縦方向に積む） */
+  align-items: center;        /* ← 縦書きでも中央寄せ */
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 姓 */
+.to_family_name {
+  letter-spacing: 0.2em;
+  padding-bottom: 1.0em;
+}
+
+/* 名（複数行対応） */
+.to_first_name {
+  letter-spacing: 0.2em;
+  padding-bottom: 0.3em;
+}
+
+/* 敬称（複数行対応） */
+.to_name_suffix {
+  letter-spacing: 0.1em;
+}
+
+
+.family,
+.first,
+.suffix {
+  display: inline;
+}
+
+/* 印刷設定 */
+@page {
+  size: 100mm 148mm;
+  margin: 0;
+}
+@media print {
+  body {
+    background: #fff;
+  }
+  .page {
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    page-break-after: always;
+  }
+}

@@ -1,0 +1,22 @@
+.print-hide {
+  display: block;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  .print-hide {
+    display: none !important;
+  }
+  .print-area .page {
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  @page {
+    size: 100mm 148mm;
+    margin: 0;
+  }
+}
